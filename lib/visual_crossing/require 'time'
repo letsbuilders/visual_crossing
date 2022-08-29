@@ -1,0 +1,45 @@
+require 'time'
+require 'visual_crossing'
+
+api_instance = VisualCrossing::TimelineWeatherAPISingleDateRequestApi.new
+location = '24.8961,66.9993' # String |
+startdate = '2022-08-25' # String |
+key = 'BMVB879K4UEQFYEY72Z3PMNUF' # String |
+opts = {
+  content_type: 'json', # String | data format of the output either json or CSV
+  unit_group: 'us', # String |
+  include: 'days', # String | data to include in the output (required for CSV format - days,hours,alerts,current,events )
+  lang: 'us' # String | Language to use for weather descriptions
+}
+
+data = api_instance.visual_crossing_web_services_rest_services_timeline_location_startdate_get(location, startdate, key, opts)
+
+
+Weather::VisualCrossingAdapter.new(
+        VisualCrossing::TimelineWeatherAPISingleDateRequestApi.new(
+            location: '24.8961,66.9993',
+            startdate: '2022-08-25',
+            units: :metric,
+            key: 'BMVB879K4UEQFYEY72Z3PMNUF',
+            opts: {
+                content_type: 'json',
+                unit_group: 'metric',
+                include: 'days',
+                lang: 'us'
+            }
+          )
+      )
+
+VisualCrossing::TimelineWeatherAPISingleDateRequestApi.new.
+
+location = '24.8961,66.9993'
+startdate = '2022-08-25'
+key = 'BMVB879K4UEQFYEY72Z3PMNUF'
+opts = {
+  content_type: 'json',
+  unit_group: 'metric',
+  include: 'days',
+  lang: 'us'
+}
+
+api_instance.visual_crossing_web_services_rest_services_timeline_location_startdate_get(location, startdate, key, opts)
